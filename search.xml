@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>升级到 macOS 10.13.2 后 Cocoapods 更新本地库失败</title>
+      <link href="/2017/12/12/cocoapod-update/"/>
+      <url>/2017/12/12/cocoapod-update/</url>
+      
+        <content type="html"><![CDATA[<p>今天趁着项目空档升级了下系统和 Xcode<br>没想到升级之后再用 Cocoapods 更新项目里面的本地库时报错了</p><h5 id="更新时错误提示信息如下"><a href="#更新时错误提示信息如下" class="headerlink" title="更新时错误提示信息如下"></a>更新时错误提示信息如下</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash: /usr/local/bin/pod: /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/bin/ruby: bad interpreter: No such file or directory</span><br></pre></td></tr></table></figure><p>由此得知更新失败的原因是系统更新后找不到 ruby 文件</p><h5 id="尝试了网上几种解决方案后-以下方式解决了我的问题"><a href="#尝试了网上几种解决方案后-以下方式解决了我的问题" class="headerlink" title="尝试了网上几种解决方案后 以下方式解决了我的问题"></a>尝试了网上几种解决方案后 以下方式解决了我的问题</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">更新 gem 版本</span><br><span class="line">$ sudo gem update --system</span><br><span class="line">更新 cocoapods</span><br><span class="line">$ sudo gem install -n /usr/local/bin cocoapods</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 系统 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Apple 个人开发者账号升级至公司账号</title>
+      <link href="/2016/11/07/iOSCompanyDev/"/>
+      <url>/2016/11/07/iOSCompanyDev/</url>
+      
+        <content type="html"><![CDATA[<h5 id="升级要求"><a href="#升级要求" class="headerlink" title="升级要求"></a>升级要求</h5><hr><ol><li>您是公司的创始人或创始人之一。  </li><li>贵公司尚未拥有已激活或已过期的公司会籍。   </li><li>贵公司非独资企业，无经营别称 (DBA)、虚构名称、虚构商号及虚构分公司。  </li><li>若您有付费 app，则说明您已同意 iTunes Connect 的“协议、税费和银行信息”中的最新付费 app协议。  </li><li>您有资格为您的公司获取一个 邓白氏编码(D-U-N-S® Number)</li></ol><h5 id="DUNS申请"><a href="#DUNS申请" class="headerlink" title="DUNS申请"></a>DUNS申请</h5><hr><p>进入苹果提供的免费DUNS申请页面:<br><a href="https://developer.apple.com/support/D-U-N-S/cn/" target="_blank" rel="noopener">https://developer.apple.com/support/D-U-N-S/cn/</a>   </p><p>提交所有信息后会有邮件过来告诉你 14天内会有人和你联系, 并给你一个申请编号(这个不是邓白氏编码,邓白氏编码是9位)</p><p>这里有需要注意的地方:</p><ul><li>页面上的资料全部需要用英文或拼音填写, 并且最好记录下来, 因为后面还需要一致的信息</li><li>公司英文名称,AppStore 开发商显示的名称</li><li>资料要真实, 并且一定要填正确号码, 会打电话过来</li><li>填写的电话要保持畅通, 14天之内会有人打电话过来 (邓白氏的中国分部, 叫华夏邓白氏, 说中文)</li></ul><p><strong>邓白氏打电话过来之后索要邮箱时,务必让他抄送一份到我们的另一个邮箱,以免没有收到邮件</strong></p><p>在邓白氏的邮件内填写完其需要的资料(和注册时一致)回复给他<br>之后不久就会收到邓白氏编码申请成功的邮件以及<br>D-U-N-S Number为:xxxxxxxxx      </p><p><strong>邓白氏编码需要等到与苹果的数据库同步后才可以使用, 不然升级IDP时会提示编码无效.</strong><br>同步周期大概14天,也可能只需要几天, 在这个过程中尝试升级的次数不要超过3次,可以每5天试着进行一次升级</p><h5 id="升级流程"><a href="#升级流程" class="headerlink" title="升级流程"></a>升级流程</h5><hr><p>拨打苹果针对中国区开发者的咨询热线：4006 701 855　　<br>苹果会给你发送一封邮件向你确定一下升级要求</p><p>按照邮件要求填写相关信息以及邓白氏编码后回复该邮件会再次收到一封在邓白氏网址确认邓白氏编码对应的公司名称是否正确的邮件,回复正确</p><p>几天之内苹果如果没有问题的话会给你发一个通过迁移审核的邮件<br>里面有个入口是让你<strong>同意将个人许可协议转移给公司</strong>的链接入口,同意后提交</p><p>至此整个升级过程就已经完成了,苹果更新服务器需要24小时,没有问题的话24小时之后AppStore里面的发布者名称就变成公司名称了<br>如果需要将公司名称由英文名变成中文再次拨打咨询电话即可</p><p>修改公司银行账户等相关信息,有收款方面的问题可以详细咨询<br><a href="mailto:itsbanking@apple.com" target="_blank" rel="noopener">itsbanking@apple.com</a>，该热线不负责此类问题。</p><p>tips：对方需要公司法人和账户拥有者打电话。</p><p>　　</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Apple </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2015/12/24/hello-world/"/>
+      <url>/2015/12/24/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> blog </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
